@@ -152,6 +152,9 @@ You can also pass scopes at call-time via the `options` object:
 The [Google APIs Explorer](https://developers.google.com/apis-explorer/) is a useful tool for determining required scopes and testing various API use cases.
 
 # Release Notes
+## 1.4.1 (Mar 17, 2015)
+* MCA #519 Use explicit require of InAppBrowser
+
 ## 1.4.0 (Jan 27, 2015)
 * Allow passing scopes via details object (fixes #491)
 * ios: Call failure callback when auth fails (fixes #498)
