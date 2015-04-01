@@ -6,7 +6,7 @@
 
 var CALENDAR_SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
 
-registerManualTests('chrome.identity', function(rootEl, addButton) {
+exports.defineManualTests = function(rootEl, addButton) {
   function hitEndpoint(endpoint, callback, /* optional */ scopes) {
     var onGetAuthToken = function(token) {
       if (!token) {
@@ -251,5 +251,4 @@ registerManualTests('chrome.identity', function(rootEl, addButton) {
 
     chrome.identity.launchWebAuthFlow(webAuthDetails, onLaunchWebAuthFlowSuccess);
   });
-});
-
+};
