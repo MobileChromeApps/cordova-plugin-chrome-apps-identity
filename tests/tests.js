@@ -2,8 +2,6 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-/* global logger */
-
 var CALENDAR_SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
 
 exports.defineManualTests = function(rootEl, addButton) {
@@ -20,7 +18,7 @@ exports.defineManualTests = function(rootEl, addButton) {
           if (xhr.status === 200) {
             callback(JSON.parse(xhr.responseText));
           } else {
-            logger('Failed with status ' + xhr.status + '.');
+            console.log('Failed with status ' + xhr.status + '.');
           }
         }
       };
@@ -41,11 +39,11 @@ exports.defineManualTests = function(rootEl, addButton) {
   addButton('Get accounts', function() {
     var callback = function(accounts) {
       if (!accounts) {
-        logger('Failed to get accounts. lastError = ' + JSON.stringify(chrome.runtime.lastError));
+        console.log('Failed to get accounts. lastError = ' + JSON.stringify(chrome.runtime.lastError));
       } else {
-        logger('Got ' + accounts.length + ' account(s):');
+        console.log('Got ' + accounts.length + ' account(s):');
         for (var i = 0; i < accounts.length; i++) {
-          logger('  ' + accounts[i].id);
+          console.log('  ' + accounts[i].id);
         }
       }
     };
@@ -56,10 +54,10 @@ exports.defineManualTests = function(rootEl, addButton) {
   addButton('Get auth token (interactive)', function() {
     var callback = function(token, account) {
       if (!token) {
-        logger('Failed to get a token. lastError = ' + JSON.stringify(chrome.runtime.lastError));
+        console.log('Failed to get a token. lastError = ' + JSON.stringify(chrome.runtime.lastError));
       } else {
-        logger('Token: ' + token);
-        logger('Account: ' + account);
+        console.log('Token: ' + token);
+        console.log('Account: ' + account);
       }
     };
 
@@ -69,10 +67,10 @@ exports.defineManualTests = function(rootEl, addButton) {
   addButton('Get auth token (non-interactive)', function() {
     var callback = function(token, account) {
       if (!token) {
-        logger('Failed to get a token. lastError = ' + JSON.stringify(chrome.runtime.lastError));
+        console.log('Failed to get a token. lastError = ' + JSON.stringify(chrome.runtime.lastError));
       } else {
-        logger('Token: ' + token);
-        logger('Account: ' + account);
+        console.log('Token: ' + token);
+        console.log('Account: ' + account);
       }
     };
 
@@ -82,10 +80,10 @@ exports.defineManualTests = function(rootEl, addButton) {
   addButton('Get auth token with account hint', function() {
     var callback = function(token, account) {
       if (!token) {
-        logger('Failed to get a token. lastError = ' + JSON.stringify(chrome.runtime.lastError));
+        console.log('Failed to get a token. lastError = ' + JSON.stringify(chrome.runtime.lastError));
       } else {
-        logger('Token: ' + token);
-        logger('Account: ' + account);
+        console.log('Token: ' + token);
+        console.log('Account: ' + account);
       }
     };
 
@@ -94,8 +92,8 @@ exports.defineManualTests = function(rootEl, addButton) {
 
   addButton('Get profile user info', function() {
     var callback = function(email, id) {
-      logger('Email: ' + email);
-      logger('ID: ' + id);
+      console.log('Email: ' + email);
+      console.log('ID: ' + id);
     };
 
     chrome.identity.getProfileUserInfo(callback);
@@ -103,11 +101,11 @@ exports.defineManualTests = function(rootEl, addButton) {
 
   addButton('Remove cached auth token', function() {
     var onRemoveCachedAuthTokenSuccess = function() {
-      logger('Token removed from cache.');
+      console.log('Token removed from cache.');
     };
 
     var onInitialGetAuthTokenSuccess = function(token) {
-      logger('Removing token ' + token + ' from cache.');
+      console.log('Removing token ' + token + ' from cache.');
 
       // Remove the token!
       chrome.identity.removeCachedAuthToken({ token: token }, onRemoveCachedAuthTokenSuccess);
@@ -119,11 +117,11 @@ exports.defineManualTests = function(rootEl, addButton) {
 
   addButton('Remove cached auth token (calendar)', function() {
     var onRemoveCachedAuthTokenSuccess = function() {
-      logger('Token removed from cache.');
+      console.log('Token removed from cache.');
     };
 
     var onInitialGetAuthTokenSuccess = function(token) {
-      logger('Removing token ' + token + ' from cache.');
+      console.log('Removing token ' + token + ' from cache.');
 
       // Remove the token!
       chrome.identity.removeCachedAuthToken({ token: token }, onRemoveCachedAuthTokenSuccess);
@@ -135,11 +133,11 @@ exports.defineManualTests = function(rootEl, addButton) {
 
   addButton('Revoke auth token', function() {
     var onRevokeAuthTokenSuccess = function() {
-      logger('Token revoked.');
+      console.log('Token revoked.');
     };
 
     var onInitialGetAuthTokenSuccess = function(token) {
-      logger('Revoking token ' + token + '.');
+      console.log('Revoking token ' + token + '.');
 
       // Revoke the token!
       chrome.identity.revokeAuthToken({ token: token }, onRevokeAuthTokenSuccess);
@@ -151,11 +149,11 @@ exports.defineManualTests = function(rootEl, addButton) {
 
   addButton('Revoke auth token (calendar)', function() {
     var onRevokeAuthTokenSuccess = function() {
-      logger('Token revoked.');
+      console.log('Token revoked.');
     };
 
     var onInitialGetAuthTokenSuccess = function(token) {
-      logger('Revoking token ' + token + '.');
+      console.log('Revoking token ' + token + '.');
 
       // Revoke the token!
       chrome.identity.revokeAuthToken({ token: token }, onRevokeAuthTokenSuccess);
@@ -167,13 +165,13 @@ exports.defineManualTests = function(rootEl, addButton) {
 
   addButton('Get name via Google\'s User Info API', function() {
     hitEndpoint('https://www.googleapis.com/oauth2/v3/userinfo', function(response) {
-      logger('Name: ' + response.name);
+      console.log('Name: ' + response.name);
     });
   });
 
   addButton('Get name via Google\'s Drive API', function() {
     hitEndpoint('https://www.googleapis.com/drive/v2/about', function(response) {
-      logger('Name: ' + response.name);
+      console.log('Name: ' + response.name);
     });
   });
 
@@ -181,9 +179,9 @@ exports.defineManualTests = function(rootEl, addButton) {
     hitEndpoint('https://www.googleapis.com/drive/v2/files', function(response) {
       var fileCount = response.items.length;
       var cappedCount = (fileCount <= 3) ? fileCount : 3;
-      logger('Files (' + cappedCount + ' of ' + fileCount + '):');
+      console.log('Files (' + cappedCount + ' of ' + fileCount + '):');
       for (var i = 0; i < cappedCount; i++) {
-          logger('  ' + response.items[i].title);
+          console.log('  ' + response.items[i].title);
       }
     });
   });
@@ -192,9 +190,9 @@ exports.defineManualTests = function(rootEl, addButton) {
     hitEndpoint('https://www.googleapis.com/calendar/v3/users/me/calendarList', function(response) {
       var calendarCount = response.items.length;
       var cappedCount = (calendarCount <= 3) ? calendarCount : 3;
-      logger('Calendars (' + cappedCount + ' of ' + calendarCount + '):');
+      console.log('Calendars (' + cappedCount + ' of ' + calendarCount + '):');
       for (var i = 0; i < cappedCount; i++) {
-        logger('  ' + response.items[i].summary);
+        console.log('  ' + response.items[i].summary);
       }
     }, CALENDAR_SCOPES);
   });
@@ -203,15 +201,15 @@ exports.defineManualTests = function(rootEl, addButton) {
     hitEndpoint('https://www.googleapis.com/youtube/v3/playlists?part=snippet&mine=true', function(response) {
       var playlistCount = response.items.length;
       var cappedCount = (playlistCount <= 3) ? playlistCount : 3;
-      logger('Playlists (' + cappedCount + ' of ' + playlistCount + '):');
+      console.log('Playlists (' + cappedCount + ' of ' + playlistCount + '):');
       for (var i = 0; i < cappedCount; i++) {
-        logger('  ' + response.items[i].snippet.title);
+        console.log('  ' + response.items[i].snippet.title);
       }
     });
   });
 
   addButton('Launch Google web auth flow', function() {
-    logger('launchWebAuthFlow (google.com): Waiting for callback');
+    console.log('launchWebAuthFlow (google.com): Waiting for callback');
 
     var webAuthDetails = {
       interactive: true,
@@ -220,9 +218,9 @@ exports.defineManualTests = function(rootEl, addButton) {
 
     var onLaunchWebAuthFlowSuccess = function(url) {
       if (!url) {
-        logger('Failed to get a token. lastError = ' + JSON.stringify(chrome.runtime.lastError));
+        console.log('Failed to get a token. lastError = ' + JSON.stringify(chrome.runtime.lastError));
       } else {
-        logger('Resulting URL: ' + url);
+        console.log('Resulting URL: ' + url);
       }
     };
 
@@ -243,9 +241,9 @@ exports.defineManualTests = function(rootEl, addButton) {
 
     var onLaunchWebAuthFlowSuccess = function(url) {
       if (!url) {
-        logger('Failed to get a token. lastError = ' + JSON.stringify(chrome.runtime.lastError));
+        console.log('Failed to get a token. lastError = ' + JSON.stringify(chrome.runtime.lastError));
       } else {
-        logger('Resulting URL: ' + url);
+        console.log('Resulting URL: ' + url);
       }
     };
 
