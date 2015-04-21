@@ -16,7 +16,6 @@
 
 @interface ChromeIdentity : CDVPlugin <GPPSignInDelegate>
 @property (nonatomic, copy) NSString* callbackId;
-- (CDVPlugin*)initWithWebView:(UIWebView*)theWebView;
 @end
 
 static void swizzleMethod(Class class, SEL destinationSelector, SEL sourceSelector);
@@ -43,16 +42,12 @@ static void swizzleMethod(Class class, SEL destinationSelector, SEL sourceSelect
 
 @implementation ChromeIdentity
 
-- (CDVPlugin*)initWithWebView:(UIWebView*)theWebView
+- (void)pluginInitialize
 {
-    self = [super initWithWebView:theWebView];
-
     GPPSignIn *signIn = [GPPSignIn sharedInstance];
     [signIn setShouldFetchGoogleUserEmail:YES];
     [signIn setShouldFetchGooglePlusUser:YES];
     [signIn setDelegate:self];
-
-    return self;
 }
 
 - (void)getAuthToken:(CDVInvokedUrlCommand*)command
