@@ -16,11 +16,11 @@
   <repo>https://github.com/MobileChromeApps/mobile-chrome-apps.git</repo>
   <issue>https://github.com/MobileChromeApps/mobile-chrome-apps/issues</issue>
 
-  <dependency id="org.chromium.common" />
-  <dependency id="org.chromium.runtime" />
+  <dependency id="cordova-plugin-chrome-apps-common" />
+  <dependency id="cordova-plugin-chrome-apps-runtime" />
   <dependency id="org.apache.cordova.inappbrowser" />
-  <dependency id="org.chromium.frameworks.googleopensource" />
-  <dependency id="org.chromium.frameworks.googleplus" />
+  <dependency id="cordova-plugin-google-open-source" />
+  <dependency id="cordova-plugin-google-plus-ios" />
 
   <js-module src="identity.js" name="Identity">
     <clobbers target="chrome.identity" />
