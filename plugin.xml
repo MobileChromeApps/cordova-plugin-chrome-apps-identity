@@ -8,7 +8,7 @@
     id="org.chromium.identity"
     version="1.4.2-dev">
   <engines>
-    <engine name="cordova" version=">=3.0.0" />
+    <engine name="cordova-android" version=">=4" />
   </engines>
 
   <name>Chrome Apps Identity API</name>
@@ -19,7 +19,6 @@
   <dependency id="org.chromium.common" />
   <dependency id="org.chromium.runtime" />
   <dependency id="org.apache.cordova.inappbrowser" />
-  <dependency id="com.google.playservices" />
   <dependency id="org.chromium.frameworks.googleopensource" />
   <dependency id="org.chromium.frameworks.googleplus" />
 
@@ -28,6 +27,8 @@
   </js-module>
 
   <platform name="android">
+    <framework src="com.google.android.gms:play-services-identity:+" />
+
     <source-file src="src/android/ChromeIdentity.java" target-dir="src/org/chromium" />
 
     <config-file target="res/xml/config.xml" parent="/widget">
