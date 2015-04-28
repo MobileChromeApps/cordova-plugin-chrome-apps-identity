@@ -18,8 +18,8 @@
 
   <dependency id="cordova-plugin-chrome-apps-common" />
   <dependency id="cordova-plugin-chrome-apps-runtime" />
-  <dependency id="org.apache.cordova.inappbrowser" />
-  <dependency id="cordova-plugin-google-open-source" />
+  <dependency id="cordova-plugin-inappbrowser" />
+  <dependency id="cordova-plugin-google-open-source-ios" />
   <dependency id="cordova-plugin-google-plus-ios" />
 
   <js-module src="identity.js" name="Identity">
