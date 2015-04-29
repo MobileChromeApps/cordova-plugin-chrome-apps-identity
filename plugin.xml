@@ -13,8 +13,8 @@
 
   <name>Chrome Apps Identity API</name>
   <keywords>chrome,identity,OAuth</keywords>
-  <repo>https://github.com/MobileChromeApps/mobile-chrome-apps.git</repo>
-  <issue>https://github.com/MobileChromeApps/mobile-chrome-apps/issues</issue>
+  <repo>https://github.com/MobileChromeApps/cordova-plugin-chrome-apps-identity.git</repo>
+  <issue>https://github.com/MobileChromeApps/cordova-plugin-chrome-apps-identity/issues</issue>
 
   <dependency id="cordova-plugin-chrome-apps-common" />
   <dependency id="cordova-plugin-chrome-apps-runtime" />
