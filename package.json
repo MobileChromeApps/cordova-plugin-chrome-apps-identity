@@ -1,0 +1,36 @@
+{
+  "name": "cordova-plugin-chrome-apps-identity",
+  "version": "1.4.2-dev",
+  "description": "This plugin provides OAuth2 authentication for Android and iOS.",
+  "cordova": {
+    "id": "cordova-plugin-chrome-apps-identity",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MobileChromeApps/cordova-plugin-chrome-apps-identity.git"
+  },
+  "keywords": [
+    "chrome",
+    "identity",
+    "OAuth",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "engines": [
+    {
+      "name": "cordova-android",
+      "version": ">=4"
+    }
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MobileChromeApps/cordova-plugin-chrome-apps-identity/issues"
+  },
+  "homepage": "https://github.com/MobileChromeApps/cordova-plugin-chrome-apps-identity"
+}
