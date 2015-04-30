@@ -16,9 +16,9 @@
   <repo>https://github.com/MobileChromeApps/cordova-plugin-chrome-apps-identity.git</repo>
   <issue>https://github.com/MobileChromeApps/cordova-plugin-chrome-apps-identity/issues</issue>
 
-  <dependency id="cordova-plugin-chrome-apps-common" />
-  <dependency id="cordova-plugin-chrome-apps-runtime" />
-  <dependency id="cordova-plugin-inappbrowser" />
+  <dependency id="cordova-plugin-chrome-apps-common@1" />
+  <dependency id="cordova-plugin-chrome-apps-runtime@1" />
+  <dependency id="cordova-plugin-inappbrowser@1" />
   <dependency id="cordova-plugin-google-open-source-ios" />
   <dependency id="cordova-plugin-google-plus-ios" />
 
