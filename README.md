@@ -152,6 +152,10 @@ You can also pass scopes at call-time via the `options` object:
 The [Google APIs Explorer](https://developers.google.com/apis-explorer/) is a useful tool for determining required scopes and testing various API use cases.
 
 # Release Notes
+
+## 1.4.2 (April 30, 2015)
+- Renamed plugin to pubilsh to NPM
+
 ## 1.4.1 (Mar 17, 2015)
 * MCA #519 Use explicit require of InAppBrowser
 
