@@ -69,12 +69,17 @@ static void swizzleMethod(Class class, SEL destinationSelector, SEL sourceSelect
 - (void)removeCachedAuthToken:(CDVInvokedUrlCommand*)command
 {
     NSString *token = [command argumentAtIndex:0];
+    BOOL signOut = [[command argumentAtIndex:1] boolValue];
     GTMOAuth2Authentication *authentication = [[GPPSignIn sharedInstance] authentication];
 
     // If the token to revoke is the same as the one we have cached, trigger a refresh.
     if ([[authentication accessToken] isEqualToString:token]) {
         [authentication setAccessToken:nil];
         [authentication authorizeRequest:nil completionHandler:nil];
+    }
+
+    if (signOut) {
+        [[GPPSignIn sharedInstance] signOut];
     }
 
     // Call the callback.

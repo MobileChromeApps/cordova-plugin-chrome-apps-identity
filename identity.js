@@ -132,7 +132,7 @@ exports.removeCachedAuthToken = function(details, callback) {
     }
 
     // Invalidate the token natively.
-    exec(callback, null, 'ChromeIdentity', 'removeCachedAuthToken', [details.token]);
+    exec(callback, null, 'ChromeIdentity', 'removeCachedAuthToken', [details.token, details.signOut]);
 };
 
 exports.revokeAuthToken = function(details, callback) {
@@ -148,7 +148,7 @@ exports.revokeAuthToken = function(details, callback) {
                     console.log('Could not revoke token; status ' + xhr.status + '.');
                     callbackWithError('Failed to revoke token. Got HTTP response ' + xhr.status, callback);
                 } else {
-                    exports.removeCachedAuthToken({ token: details.token }, callback);
+                    exports.removeCachedAuthToken({ token: details.token, signOut: true }, callback);
                 }
             }
         };
