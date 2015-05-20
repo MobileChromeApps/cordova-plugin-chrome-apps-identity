@@ -56,7 +56,7 @@ public class ChromeIdentity extends CordovaPlugin {
         CallbackContext callbackContext;
         String scopesString;
         boolean interactive = true;
-        boolean signOut = true;
+        boolean signOut = false;
         String accountHint;
         String token;
 
