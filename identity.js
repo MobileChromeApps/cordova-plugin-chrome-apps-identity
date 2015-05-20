@@ -204,7 +204,7 @@ function getAllParametersFromUrl(url, startString, endString) {
 }
 
 function launchInAppBrowser(authURL, interactive, callback) {
-    var openInAppBrowser = require('org.apache.cordova.inappbrowser.inappbrowser');
+    var openInAppBrowser = require('cordova-plugin-inappbrowser.inappbrowser');
     var oAuthBrowser = openInAppBrowser(authURL, '_blank', 'hidden=yes');
     var success = false;
     var timeoutid;
