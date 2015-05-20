@@ -56,6 +56,7 @@ public class ChromeIdentity extends CordovaPlugin {
         CallbackContext callbackContext;
         String scopesString;
         boolean interactive = true;
+        boolean signOut = true;
         String accountHint;
         String token;
 
@@ -76,7 +77,7 @@ public class ChromeIdentity extends CordovaPlugin {
                     if ("getAuthToken".equals(action)) {
                         getAuthToken(interactive, scopesString, accountHint, callbackContext);
                     } else if ("removeCachedAuthToken".equals(action)) {
-                        removeCachedAuthToken(token, callbackContext);
+                        removeCachedAuthToken(token, signOut, callbackContext);
                     } else if ("getAccounts".equals(action)) {
                         getAccounts(callbackContext);
                     }
@@ -101,6 +102,7 @@ public class ChromeIdentity extends CordovaPlugin {
             callDetails.accountHint = args.isNull(3) ? null : args.getString(3);
         } else if ("removeCachedAuthToken".equals(action)) {
             callDetails.token = args.getString(0);
+            callDetails.signOut = args.getBoolean(1);
         } else if ("getAccounts".equals(action)) {
             // No args.
         } else {
@@ -276,9 +278,11 @@ public class ChromeIdentity extends CordovaPlugin {
         return jsonObject;
     }
 
-    private void removeCachedAuthToken(String token, CallbackContext callbackContext) {
-        try {
+    private void removeCachedAuthToken(String token, boolean signOut, CallbackContext callbackContext) {
+        if (signOut) {
             cachedAccountName = null;
+        }
+        try {
             Context context = cordova.getActivity();
             GoogleAuthUtil.clearToken(context, token);
             callbackContext.success();
