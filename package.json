@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-chrome-apps-identity",
-  "version": "1.4.4-dev",
+  "version": "1.4.4",
   "description": "This plugin provides OAuth2 authentication for Android and iOS.",
   "cordova": {
     "id": "cordova-plugin-chrome-apps-identity",

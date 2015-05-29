@@ -153,6 +153,9 @@ The [Google APIs Explorer](https://developers.google.com/apis-explorer/) is a us
 
 # Release Notes
 
+## 1.4.4 (May 29, 2015)
+* Fix logout so you can switch accounts without restarting the app.
+
 ## 1.4.3 (May 19, 2015)
 - Fix regression in 1.4.2 where launchWebAuthFlow was broken
 
