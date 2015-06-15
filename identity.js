@@ -132,7 +132,7 @@ exports.removeCachedAuthToken = function(details, callback) {
     }
 
     // Invalidate the token natively.
-    exec(callback, null, 'ChromeIdentity', 'removeCachedAuthToken', [details.token, details.signOut]);
+    exec(callback, null, 'ChromeIdentity', 'removeCachedAuthToken', [details.token, !!details.signOut]);
 };
 
 exports.revokeAuthToken = function(details, callback) {
