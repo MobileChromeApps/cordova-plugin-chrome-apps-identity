@@ -153,6 +153,9 @@ The [Google APIs Explorer](https://developers.google.com/apis-explorer/) is a us
 
 # Release Notes
 
+## 1.4.5 (June 15, 2015)
+* Fix `removeCachedAuthToken` throwing exception when `signOut` parameter not specified
+
 ## 1.4.4 (May 29, 2015)
 * Fix logout so you can switch accounts without restarting the app.
 
