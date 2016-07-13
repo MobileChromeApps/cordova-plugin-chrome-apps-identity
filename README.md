@@ -153,6 +153,9 @@ The [Google APIs Explorer](https://developers.google.com/apis-explorer/) is a us
 
 # Release Notes
 
+## 1.4.6 (July 13, 2016)
+* Fix play services dependency to work with latest verion of play services.
+
 ## 1.4.5 (June 15, 2015)
 * Fix `removeCachedAuthToken` throwing exception when `signOut` parameter not specified
 
